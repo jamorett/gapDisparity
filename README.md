@@ -6,11 +6,11 @@
 
 
 
-Este repositorio contiene un nodo de navegación autónoma en ROS2 basado en el algoritmo de \*\*Gap Triangle\*\* (una mejora del enfoque Disparity Extender), adaptado específicamente para el simulador \*\*F1Tenth\*\*.
+Este repositorio contiene un nodo de navegación autónoma en ROS2 basado en el algoritmo de Gap Triangle (una mejora del enfoque Disparity Extender), adaptado específicamente para el simulador F1Tenth.
 
 
 
-\## 🚗 Descripción del enfoque utilizado
+\ 🚗 Descripción del enfoque utilizado
 
 
 
@@ -72,7 +72,7 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 
 
-\### Ejecución del nodo
+\ Ejecución del nodo
 
 
 
@@ -80,7 +80,6 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 
 
-```bash
 
 cd ~/ros2_ws/src
 
