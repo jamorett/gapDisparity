@@ -2,7 +2,7 @@
 
 
 
-\# F1Tenth - Gap Triangle Navigation Node
+# F1Tenth - Gap Triangle Navigation Node
 
 
 
@@ -10,7 +10,7 @@ Este repositorio contiene un nodo de navegación autónoma en ROS2 basado en el 
 
 
 
-\ 🚗 Descripción del enfoque utilizado
+ 🚗 Descripción del enfoque utilizado
 
 
 
@@ -18,47 +18,47 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 
 
-1\. Extensión de disparidades (Disparity Extender): crea burbujas de seguridad alrededor de obstáculos.
+1. Extensión de disparidades (Disparity Extender): crea burbujas de seguridad alrededor de obstáculos.
 
-2\. Selección de dirección óptima: se aplica un sesgo frontal y se elige el ángulo con mayor visibilidad.
+2. Selección de dirección óptima: se aplica un sesgo frontal y se elige el ángulo con mayor visibilidad.
 
-3\. Corrección de colisiones laterales: se ajusta el giro si se detectan objetos cercanos a los lados.
+3. Corrección de colisiones laterales: se ajusta el giro si se detectan objetos cercanos a los lados.
 
-4\. Cálculo de velocidad dinámica: la velocidad se ajusta en tiempo real según el entorno visible y el ángulo de giro.
+4. Cálculo de velocidad dinámica: la velocidad se ajusta en tiempo real según el entorno visible y el ángulo de giro.
 
-5\. Conteo de vueltas y cronómetro: se registra cada vuelta completada usando `/ego_racecar/odom`, con tiempos publicados en consola.
-
-
-
-\ 📁 Estructura del código
+5. Conteo de vueltas y cronómetro: se registra cada vuelta completada usando `/ego_racecar/odom`, con tiempos publicados en consola.
 
 
 
-\- `gap_triangle.py`: nodo ROS2 que realiza:
-
-  - Suscripción a `/scan` (sensor LiDAR)
-
-  - Suscripción a `/ego_racecar/odom` (posición actual del vehículo)
-
-  - Publicación en `/drive` (comandos de dirección y velocidad)
-
-  - Lógica de navegación, seguridad, y registro de vueltas
+ 📁 Estructura del código
 
 
 
-\ ▶️ Instrucciones de ejecución
+- `gap_triangle.py`: nodo ROS2 que realiza:
+
+- Suscripción a `/scan` (sensor LiDAR)
+
+- Suscripción a `/ego_racecar/odom` (posición actual del vehículo)
+
+- Publicación en `/drive` (comandos de dirección y velocidad)
+
+- Lógica de navegación, seguridad, y registro de vueltas
 
 
 
-\ Requisitos
+▶️ Instrucciones de ejecución
 
 
 
-\- ROS 2 (recomendado Humble o Foxy)
+Requisitos
 
-\- Simulador F1Tenth corriendo
 
-\- Dependencias:
+
+- ROS 2 (recomendado Humble o Foxy)
+
+- Simulador F1Tenth corriendo
+
+- Dependencias:
 
   - `numpy`
 
@@ -72,11 +72,11 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 
 
-\ Ejecución del nodo
+Ejecución del nodo
 
 
 
-1\. Clona este repositorio en tu workspace de ROS2:
+1. Clona este repositorio en tu workspace de ROS2:
 
 
 
