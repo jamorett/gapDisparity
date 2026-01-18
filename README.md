@@ -60,15 +60,15 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 - Dependencias:
 
-  - `numpy`
+- `numpy`
 
-  - `rclpy`
+- `rclpy`
 
-  - `ackermann_msgs`
+- `ackermann_msgs`
 
-  - `sensor_msgs`
+- `sensor_msgs`
 
-  - `nav_msgs`
+- `nav_msgs`
 
 
 
@@ -79,7 +79,7 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 1. Clona este repositorio en tu workspace de ROS2:
 
 
-
+```bash
 
 cd ~/ros2_ws/src
 
@@ -90,6 +90,8 @@ cd ~/ros2_ws
 colcon build
 
 source install/setup.bash
+
+```
 
 ## 📖 Explicación del código (gap_triangle.py)
 
@@ -104,19 +106,19 @@ El nodo gap_triangle.py implementa un controlador de navegación autónoma para 
    Se suscribe a:
 
 
-
-      /scan: datos del LiDAR.
-
-
-
-       /ego_racecar/odom: posición del vehículo para contar vueltas.
-
-
-   Publica comandos en /drive (velocidad y ángulo de dirección).
+   
+   - /scan: datos del LiDAR.
 
 
 
-   Utiliza lógica de evasión de obstáculos, selección de ruta óptima, y control dinámico de velocidad.
+   - /ego_racecar/odom: posición del vehículo para contar vueltas.
+
+
+   - Publica comandos en /drive (velocidad y ángulo de dirección).
+
+
+
+   - Utiliza lógica de evasión de obstáculos, selección de ruta óptima, y control dinámico de velocidad.
 
 
 
@@ -128,27 +130,26 @@ Están definidos al inicio e incluyen:
 
 
 
-   Ancho del vehículo (CAR_WIDTH)
+   - Ancho del vehículo (CAR_WIDTH)
+
+
+   - Margen de seguridad alrededor del vehículo (SAFETY_MARGIN)
 
 
 
-   Margen de seguridad alrededor del vehículo (SAFETY_MARGIN)
+   - Límites de velocidad, aceleración, frenado
 
 
 
-   Límites de velocidad, aceleración, frenado
+   - Resolución y campo de visión del LiDAR
 
 
 
-   Resolución y campo de visión del LiDAR
+   - Umbral para detectar disparidades (DISPARITY_THRESHOLD)
 
 
 
-   Umbral para detectar disparidades (DISPARITY_THRESHOLD)
-
-
-
-   Constantes para suavizar el giro y detectar vueltas
+   - Constantes para suavizar el giro y detectar vueltas
 
 
 
@@ -160,43 +161,43 @@ Función que se ejecuta en cada ciclo del LiDAR:
 
 
 
-   Limpieza de datos: convierte a numpy y reemplaza inf por el rango máximo.
+   - Limpieza de datos: convierte a numpy y reemplaza inf por el rango máximo.
 
 
 
-   Extensión de obstáculos: mediante disparity_extender(), se expande la zona de seguridad alrededor de cambios bruscos de distancia (bordes de obstáculos).
+   - Extensión de obstáculos: mediante disparity_extender(), se expande la zona de seguridad alrededor de cambios bruscos de distancia (bordes de obstáculos).
 
 
 
-   Selección del objetivo: elige el ángulo con mayor apertura, priorizando los que están frente al auto usando un sesgo cos(θ).
+   - Selección del objetivo: elige el ángulo con mayor apertura, priorizando los que están frente al auto usando un sesgo cos(θ).
 
 
 
-   Corrección lateral: avoid_side_collision() reduce el giro si hay obstáculos muy cercanos a los lados.
+   - Corrección lateral: avoid_side_collision() reduce el giro si hay obstáculos muy cercanos a los lados.
 
 
 
-   Suavizado: se aplica un filtro exponencial para evitar cambios bruscos en la dirección.
+   - Suavizado: se aplica un filtro exponencial para evitar cambios bruscos en la dirección.
 
 
 
-   Cálculo de velocidad: compute\_speed() ajusta la velocidad considerando:
+   - Cálculo de velocidad: compute\_speed() ajusta la velocidad considerando:
 
 
 
-       Distancia libre al frente
+      - Distancia libre al frente
 
 
 
-       Magnitud del giro
+       - Magnitud del giro
 
 
 
-       Distancia necesaria para frenar
+       - Distancia necesaria para frenar
 
 
 
-   Publicación: se envía un mensaje AckermannDriveStamped con la dirección y velocidad resultantes.
+   - Publicación: se envía un mensaje AckermannDriveStamped con la dirección y velocidad resultantes.
 
 
 
@@ -208,23 +209,23 @@ Detecta cuando el vehículo completa una vuelta:
 
 
 
-   Registra la posición inicial (track_origin) al comenzar.
+   - Registra la posición inicial (track_origin) al comenzar.
 
 
 
-   Calcula la distancia del vehículo a esa posición.
+   - Calcula la distancia del vehículo a esa posición.
 
 
 
-   Si vuelve a acercarse (dentro del radio LAP_DETECTION_RADIUS) y ya ha salido una vez, cuenta una nueva vuelta.
+   - Si vuelve a acercarse (dentro del radio LAP_DETECTION_RADIUS) y ya ha salido una vez, cuenta una nueva vuelta.
 
 
 
-   Publica en consola el número de vuelta y su tiempo.
+   - Publica en consola el número de vuelta y su tiempo.
 
 
 
-   La primera vuelta no se cuenta para evitar falsos positivos tras iniciar el nodo.
+   - La primera vuelta no se cuenta para evitar falsos positivos tras iniciar el nodo.
 
 
 
@@ -232,15 +233,15 @@ Detecta cuando el vehículo completa una vuelta:
 
 
 
-   Detecta bordes (disparidades) en las lecturas del LiDAR.
+   - Detecta bordes (disparidades) en las lecturas del LiDAR.
 
 
 
-   Extiende el obstáculo hacia ambos lados en un rango proporcional al ángulo necesario para evitarlo.
+   - Extiende el obstáculo hacia ambos lados en un rango proporcional al ángulo necesario para evitarlo.
 
 
 
-   Aumenta la seguridad en curvas cerradas o zonas estrechas.
+   - Aumenta la seguridad en curvas cerradas o zonas estrechas.
 
 
 
@@ -248,40 +249,37 @@ Detecta cuando el vehículo completa una vuelta:
 
 
 
-   Calcula la velocidad objetivo en función de:
+   - Calcula la velocidad objetivo en función de:
 
 
 
-       La distancia al obstáculo directamente al frente.
+       - La distancia al obstáculo directamente al frente.
 
 
 
-       El ángulo de giro (menor velocidad en curvas).
+       - El ángulo de giro (menor velocidad en curvas).
 
 
 
-       La distancia requerida para frenar en seco (v <= sqrt(2·a·d)).
+       - La distancia requerida para frenar en seco (v <= sqrt(2·a·d)).
 
 
 
-   Devuelve el valor mínimo entre lo deseado y lo seguro.
+   - Devuelve el valor mínimo entre lo deseado y lo seguro.
 
 
 
 ## 🚧 avoid_side_collision(ranges, angle)
 
 
+- Evalúa obstáculos a 90° a cada lado.
 
-   Evalúa obstáculos a 90° a cada lado.
-
-
-
-Si el vehículo intenta girar hacia un lado donde hay peligro, reduce el ángulo para evitar la colisión.
+- Si el vehículo intenta girar hacia un lado donde hay peligro, reduce el ángulo para evitar la colisión.
 
 
 
 ## 📐 get_max_steering_angle()
 
-   Retorna el ángulo máximo que cubre el LiDAR, usado para normalizar cálculos de giro.
+   - Retorna el ángulo máximo que cubre el LiDAR, usado para normalizar cálculos de giro.
 
 
