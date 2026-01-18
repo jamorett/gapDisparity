@@ -10,7 +10,7 @@ Este repositorio contiene un nodo de navegación autónoma en ROS2 basado en el 
 
 
 
- 🚗 Descripción del enfoque utilizado
+## 🚗 Descripción del enfoque utilizado
 
 
 
@@ -30,7 +30,7 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 
 
- 📁 Estructura del código
+## 📁 Estructura del código
 
 
 
@@ -46,11 +46,11 @@ El nodo implementa una estrategia reactiva de conducción autónoma usando datos
 
 
 
-▶️ Instrucciones de ejecución
+## ▶️ Instrucciones de ejecución
 
 
 
-Requisitos
+### Requisitos
 
 
 
@@ -72,7 +72,7 @@ Requisitos
 
 
 
-Ejecución del nodo
+### Ejecución del nodo
 
 
 
@@ -91,13 +91,13 @@ colcon build
 
 source install/setup.bash
 
-📖 Explicación del código (gap_triangle.py)
+## 📖 Explicación del código (gap_triangle.py)
 
 
 
 El nodo gap_triangle.py implementa un controlador de navegación autónoma para F1Tenth basado en una extensión del algoritmo Disparity Extender. A continuación, se explica su estructura y lógica:
 
-🧩 Estructura general
+## 🧩 Estructura general
 
 
 
@@ -120,7 +120,7 @@ El nodo gap_triangle.py implementa un controlador de navegación autónoma para 
 
 
 
-⚙️ Parámetros ajustables
+## ⚙️ Parámetros ajustables
 
 
 
@@ -152,7 +152,7 @@ Están definidos al inicio e incluyen:
 
 
 
-🔄 scan_callback()
+## 🔄 scan_callback()
 
 
 
@@ -200,7 +200,7 @@ Función que se ejecuta en cada ciclo del LiDAR:
 
 
 
-📍 odom_callback()
+## 📍 odom_callback()
 
 
 
@@ -228,7 +228,7 @@ Detecta cuando el vehículo completa una vuelta:
 
 
 
-📐 disparity_extender(ranges)
+## 📐 disparity_extender(ranges)
 
 
 
@@ -268,7 +268,7 @@ Detecta cuando el vehículo completa una vuelta:
 
 
 
-🚧 avoid_side_collision(ranges, angle)
+## 🚧 avoid_side_collision(ranges, angle)
 
 
 
@@ -280,9 +280,7 @@ Si el vehículo intenta girar hacia un lado donde hay peligro, reduce el ángulo
 
 
 
-📐 get_max_steering_angle()
-
-
+## 📐 get_max_steering_angle()
 
    Retorna el ángulo máximo que cubre el LiDAR, usado para normalizar cálculos de giro.
 
